@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Layout_Food"
+    android:background="@color/white">
+
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        app:srcCompat="@drawable/miyt"
+        />
+
+    <TextView
+        android:id="@+id/txtName"
+        android:fontFamily="@font/bungee"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mì Trộn Hạnh Phúc"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/txtDes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-  Thực hiện : Trụng vắt mì vào nước sôi đến khi chín và ngâm nước lạnh 2 - 3 phút . Sau đó luộc trứng gà trong khoảng thời gian 7 - 8 phút để có được trứng lòng đào . Sau đó , dùng 1 thìa sa tế hoặc sốt bơ để vào để trộn mì vào bát . Lần lượt đặt các topping lên trên bát và trình bày một cách đẹp mắt ."
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/txtName"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="17dp"
+        android:fontFamily="@font/antic"/>
+
+
+    <TextView
+
+        android:id="@+id/txtBack"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="30dp"
+        android:background="@drawable/round_button"
+        android:gravity="center"
+        android:text="BACK"
+        android:textColor="@android:color/background_light"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/txtDes"
+        />
+
+
+
+</RelativeLayout>
