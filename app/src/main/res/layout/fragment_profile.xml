@@ -9,40 +9,142 @@
     android:background="@color/white">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="405dp">
+        android:layout_height="match_parent">
 
-        <ImageView
+<!--        <ImageView-->
+<!--            android:id="@+id/imguser"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="150dp"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="50dp"-->
+<!--            android:src="@drawable/miyt">
+</ImageView>-->
+
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imguser"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            android:src="@drawable/miyt"></ImageView>
+            android:src="@drawable/default_user"
+            ></de.hdodenhof.circleimageview.CircleImageView>
 
         <TextView
 
-            android:id="@+id/textView2"
+            android:id="@+id/edtname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imguser"
             android:gravity="center"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24dp"
             android:text="USERNAME111"
             android:textSize="21dp"
             android:textStyle="bold" />
 
+
+        <TextView
+            android:layout_below="@+id/card"
+            android:id="@+id/edtmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24sp"
+            android:layout_marginBottom="14sp"
+            android:drawableLeft="@drawable/baseline_mail_24"
+            android:drawablePadding="20sp"
+            android:fontFamily="@font/antic"
+            android:paddingLeft="45dp"
+            android:text="Mitron@gmail.com"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_below="@+id/edtmail"
+            android:paddingLeft="45dp"
+            android:id="@+id/edtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24sp"
+            android:layout_marginBottom="14sp"
+            android:fontFamily="@font/antic"
+            android:drawableLeft="@drawable/baseline_phone_android_24"
+            android:drawablePadding="20sp"
+            android:text="0123456789"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_below="@+id/edtPhone"
+            android:paddingLeft="45dp"
+            android:id="@+id/edtabout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24sp"
+            android:layout_marginBottom="14sp"
+            android:fontFamily="@font/antic"
+            android:drawableLeft="@drawable/baseline_co_present_24"
+            android:drawablePadding="20sp"
+            android:text="ABOUT US"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+
+            android:id="@+id/log_out"
+            android:layout_width="320dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/edtabout"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_button3"
+
+            android:gravity="center"
+            android:text="LOG OUT"
+            android:textSize="20dp"
+            android:textStyle="bold"></TextView>
+
+<!--        <TextView-->
+<!--            android:paddingLeft="45dp"-->
+<!--            android:id="@+id/edtAddtogroup"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="24sp"-->
+<!--            android:layout_marginBottom="14sp"-->
+<!--            android:fontFamily="@font/antic"-->
+<!--            android:drawableLeft="@drawable/baseline_group_add_24"-->
+<!--            android:drawablePadding="20sp"-->
+<!--            android:text="Add to group"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <TextView-->
+<!--            android:paddingLeft="45dp"-->
+<!--            android:id="@+id/edtCmt"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="24sp"-->
+<!--            android:fontFamily="@font/antic"-->
+<!--            android:layout_marginBottom="14sp"-->
+<!--            android:drawableLeft="@drawable/baseline_comment_24"-->
+<!--            android:drawablePadding="20sp"-->
+<!--            android:text="Show all comments"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold" />-->
+
         <androidx.cardview.widget.CardView
+            android:id="@+id/card"
             android:layout_width="400dp"
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="275dp"
+            android:layout_below="@+id/edtname"
+            android:layout_marginTop="30dp"
             >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:weightSum="3"
+                android:weightSum="2"
                 android:background="@color/white">
                 <LinearLayout
                     android:orientation="vertical"
@@ -50,23 +152,25 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
+
                     <TextView
-                        android:textStyle="bold"
-                        android:textColor="@android:color/holo_orange_dark"
-                        android:textSize="25dp"
-                        android:text="Posts"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    </TextView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:fontFamily="@font/antic"
-                        android:text="07"
+                        android:background="@drawable/baseline_featured_play_list_24"
                         android:textStyle="bold"
                         android:textSize="25dp"
                         android:paddingTop="10dp"
                         android:textColor="@color/black"/>
+                    <TextView
+                        android:textStyle="bold"
+                        android:textColor="@android:color/holo_orange_dark"
+                        android:textSize="25dp"
+                        android:text="History"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </TextView>
+
 
                 </LinearLayout>
                 <LinearLayout
@@ -75,53 +179,31 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
-                    <TextView
-                        android:textStyle="bold"
-                        android:textColor="@android:color/holo_orange_dark"
-                        android:textSize="25dp"
-                        android:text="Folllowers"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    </TextView>
+
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:paddingTop="10dp"
                         android:fontFamily="@font/antic"
-                        android:text="125"
+
                         android:textColor="@color/black"
+                        android:background="@drawable/baseline_favorite_24"
                         android:textSize="25dp"
                         android:textStyle="bold" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
                     <TextView
                         android:textStyle="bold"
                         android:textColor="@android:color/holo_orange_dark"
                         android:textSize="25dp"
-                        android:text="Following"
+                        android:text="Favourite"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                     </TextView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="60"
-                        android:fontFamily="@font/antic"
-                        android:textStyle="bold"
-                        android:textSize="25dp"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/black"/>
 
 
 
                 </LinearLayout>
+
 
             </LinearLayout>
 
@@ -131,78 +213,6 @@
 
 
     </RelativeLayout>
-
-
-    <TextView
-        android:id="@+id/edtName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24sp"
-        android:layout_marginBottom="14sp"
-        android:drawableLeft="@drawable/baseline_mail_24"
-        android:drawablePadding="20sp"
-        android:fontFamily="@font/antic"
-        android:paddingLeft="45dp"
-        android:text="Mitron@gmail.com"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:paddingLeft="45dp"
-        android:id="@+id/edtPhone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24sp"
-        android:layout_marginBottom="14sp"
-        android:fontFamily="@font/antic"
-        android:drawableLeft="@drawable/baseline_phone_android_24"
-        android:drawablePadding="20sp"
-        android:text="0123456789"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:paddingLeft="45dp"
-        android:id="@+id/edtAddtogroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24sp"
-        android:layout_marginBottom="14sp"
-        android:fontFamily="@font/antic"
-        android:drawableLeft="@drawable/baseline_group_add_24"
-        android:drawablePadding="20sp"
-        android:text="Add to group"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:paddingLeft="45dp"
-        android:id="@+id/edtCmt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24sp"
-        android:fontFamily="@font/antic"
-        android:layout_marginBottom="14sp"
-        android:drawableLeft="@drawable/baseline_comment_24"
-        android:drawablePadding="20sp"
-        android:text="Show all comments"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-
-
-
-    <FrameLayout
-        android:id="@+id/frame_layout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </FrameLayout>
-
 
 
 </LinearLayout>

@@ -8,14 +8,16 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import java.util.List;
 
 public class Adapter_List extends BaseAdapter {
-    private HomeFragment context;
+    private Fragment context;
     private int layout;
     private List<List_Food> arraylist;
 
-    public Adapter_List(HomeFragment context, int layout, List<List_Food> arraylist) {
+    public Adapter_List(Fragment context, int layout, List<List_Food> arraylist) {
         this.context = context;
         this.layout = layout;
         this.arraylist = arraylist;

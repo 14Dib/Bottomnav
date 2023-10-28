@@ -8,6 +8,15 @@
         android:icon="@drawable/baseline_home_24"
         
         android:id="@+id/action_home"/>
+
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/baseline_shopping_cart_24"
+        android:title="Cart"
+        android:id="@+id/action_setting"
+        />
+
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,11 +24,5 @@
         android:title="Person"
         android:id="@+id/action_profile"
         />
-    <item
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:icon="@drawable/baseline_settings_24"
-        android:title="Setting"
-        android:id="@+id/action_setting"
-        />
+
 </menu>

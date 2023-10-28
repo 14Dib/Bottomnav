@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,10 +58,37 @@ public class SettingFragment extends Fragment {
         }
     }
 
+    ListView listViewfood;
+
+    ArrayList<List_Food> list_foods;
+
+    Adapter_List adapter_list;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setting, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_setting, container, false);
+
+        listViewfood = (ListView) view.findViewById(R.id.listviewFood);
+        list_foods = new ArrayList<>();
+
+        list_foods.add(new List_Food("Mì Trộn Cải Thìa","(Sốt Sa Tế/Bơ Tỏi)",25.000,R.drawable.caithia));
+        list_foods.add(new List_Food("Mì Trộn Ốp La"  ,"(Sốt Sa Tế/Bơ Tỏi)",35.000,R.drawable.opla));
+        list_foods.add(new List_Food("Mì Trộn Xá Xíu","(Sốt Sa Tế/Bơ Tỏi) ",45.000,R.drawable.xaxiu));
+        list_foods.add(new List_Food("Mì Hoành Thánh Xá Xíu"   ,"(Sốt Sa Tế/Bơ Tỏi)",55.000,R.drawable.hoanhthanhxaxiu));
+        list_foods.add(new List_Food("Mì Trộn Lôi Ký Thập Cẩm" ,"(Sốt Sa Tế/Bơ Tỏi)",25.000,R.drawable.loikithapcam));
+        list_foods.add(new List_Food("Mì Trộn Vịt Quay Xá Xíu","(Sốt Sa Tế/Bơ Tỏi)",35.000,R.drawable.vitquayxaxiu));
+        list_foods.add(new List_Food("Mì Trộn Vịt Quay"  ,"(Sốt Sa Tế/Bơ Tỏi)",45.000,R.drawable.vitquay));
+        list_foods.add(new List_Food("Mì Trộn Đùi Vịt Quay","(Sốt Sa Tế/Bơ Tỏi) ",55.000,R.drawable.duivitquay));
+        list_foods.add(new List_Food("Mì Trộn Hoành Thánh"   ,"(Sốt Sa Tế/Bơ Tỏi)",25.000,R.drawable.hoanhthanh));
+        list_foods.add(new List_Food("Soup Bò Viên" ,"(Sốt Sa Tế/Bơ Tỏi)",35.000,R.drawable.soup));
+
+        adapter_list = new Adapter_List(SettingFragment.this,R.layout.layout_cart,list_foods);
+        listViewfood.setAdapter(adapter_list);
+
+        listViewfood.setClickable(true);
+        return view;
     }
 }

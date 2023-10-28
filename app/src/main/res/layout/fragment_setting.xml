@@ -3,17 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/material_dynamic_primary30"
+    android:background="@color/white"
     tools:context=".SettingFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
+        android:id="@+id/listviewFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:text="SETTING FRAGMENT"
-        android:textColor="@color/black"
+        android:padding="10dp"
+        android:background="@color/white"
+        android:layout_marginBottom="285dp"
         />
+
+    <TextView
+        android:id="@+id/txtTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bungee"
+        android:text="Tổng Cộng : 100.000 vnd"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="220dp"
+        android:gravity="center"
+        android:layout_marginLeft="30dp"
+        />
+
+    <TextView
+
+        android:id="@+id/log_out"
+        android:layout_width="380dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_button3"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="150dp"
+        android:gravity="center"
+        android:text="Đặt Hàng"
+        android:textSize="20dp"
+        android:layout_marginLeft="15dp"
+        android:textStyle="bold"></TextView>
+
 
 </FrameLayout>
