@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -30,7 +31,7 @@ import java.util.Map;
 public class SignUpActivity extends AppCompatActivity {
 
     TextView btnSignup;
-    TextInputEditText edtname, edtpass, edtphone, edtemail;
+    TextInputEditText edtname, edtpass, edtphone, edtemail, editconfirmpass;
 
     FirebaseAuth fAuth;
 
@@ -50,10 +51,10 @@ public class SignUpActivity extends AppCompatActivity {
 
         //EDITTEXT
         edtname = (TextInputEditText) findViewById(R.id.username3);
-        edtpass = (TextInputEditText) findViewById(R.id.password3);
+        edtpass = (TextInputEditText) findViewById(R.id.password_4);
         edtphone = (TextInputEditText) findViewById(R.id.phone2);
         edtemail = (TextInputEditText) findViewById(R.id.email2);
-
+        editconfirmpass = (TextInputEditText) findViewById(R.id.confirmpass_4);
 
         //BUTTON
 
@@ -77,12 +78,18 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = edtemail.getText().toString().trim();
                 String password = edtpass.getText().toString().trim();
+                String confirmpassword = editconfirmpass.getText().toString().trim();
                 String phone = edtphone.getText().toString().trim();
                 String name = edtname.getText().toString().trim();
-
+                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
                 if(TextUtils.isEmpty(email)){
                     edtemail.setError("Yêu cầu email");
+                    return;
+                }
+
+                if(!(email.matches(emailPattern))){
+                    edtemail.setError("Emai không hợp lệ");
                     return;
                 }
 
@@ -96,12 +103,43 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
+                if(confirmpassword.equals(password) == false){
+                    editconfirmpass.setError("Mật khẩu không trùng nhau");
+                    return;
+                }
+
+                if(TextUtils.isEmpty(phone)){
+                    edtphone.setError("Yêu cầu số điện thoại");
+                    return;
+                }
+
+
+                if(TextUtils.isEmpty(name)){
+                    edtname.setError("Yêu cầu tên");
+                    return;
+                }
+
                 progressBar.setVisibility(View.VISIBLE);
 
                 fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            FirebaseUser user2 = fAuth.getCurrentUser();
+                            user2.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(SignUpActivity.this, "Đã gửi xác thực email", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.d(TAG, "OnFailure: Email not send " + e.getMessage());
+                                }
+                            });
+
                             Toast.makeText(SignUpActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                             userID = fAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = fstore.collection("users").document(userID);
@@ -109,6 +147,7 @@ public class SignUpActivity extends AppCompatActivity {
                             user.put("fname", name);
                             user.put("email", email);
                             user.put("phone", phone);
+//                            user.put("avatar", "");
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {

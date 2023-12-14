@@ -27,5 +27,13 @@
         android:background="@color/white"
         android:layout_marginBottom="80dp"
         />
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/recycle_food"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/white"-->
+<!--        android:padding="10dp"-->
+<!--        android:layout_marginBottom="80dp"-->
+<!--        ></androidx.recyclerview.widget.RecyclerView>-->
 
 </FrameLayout>

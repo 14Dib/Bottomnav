@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    >
+
+    <ImageView
+        android:id="@+id/cart_history_img"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        ></ImageView>
+    <TextView
+        android:id="@+id/cart_history_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="NAME"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/cart_history_img"
+        ></TextView>
+
+    <TextView
+        android:id="@+id/cart_history_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/cart_history_img"
+        android:text="Description"
+        android:textSize="16dp"
+        android:textStyle="italic"
+        android:textColor="#acacac"
+        android:padding="10dp"
+        android:layout_below="@+id/cart_history_name"
+        ></TextView>
+
+    <TextView
+        android:id="@+id/cart_history_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="25.000 vnd"
+        android:textSize="19dp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_toRightOf="@+id/cart_history_img"
+        android:layout_below="@+id/cart_history_des"
+        android:layout_alignBottom="@id/cart_history_img"
+        ></TextView>
+
+
+    <TextView
+        android:id="@+id/cart_history_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SL :1"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginTop="8dp"
+
+        android:layout_below="@+id/cart_history_des"
+        android:layout_toRightOf="@+id/cart_history_price"
+        android:layout_marginLeft="60dp"
+        ></TextView>
+
+
+
+
+
+</RelativeLayout>

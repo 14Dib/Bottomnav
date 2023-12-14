@@ -5,20 +5,29 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.viewmodel.CreationExtras;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.bottomnav.databinding.ActivityMainBinding;
+import com.example.bottomnav.listener.ICartLoadListener;
+import com.example.bottomnav.listener.IMitronLoadListestener;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -66,11 +75,11 @@ public class HomeFragment extends Fragment {
 
     ListView listViewfood;
 
-    ArrayList <List_Food> list_foods;
-
     Adapter_List adapter_list;
 
-    ActivityMainBinding binding;
+    ArrayList<FoodModel> list_foods;
+    IMitronLoadListestener mitronLoadListestener;
+    ICartLoadListener cartLoadListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,41 +88,79 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+//        recyclerFood = (RecyclerView) view.findViewById(R.id.recycle_food);
+
+
         listViewfood = (ListView) view.findViewById(R.id.listviewFood);
 
         list_foods = new ArrayList<>();
 
-        list_foods.add(new List_Food("Mì Trộn Cải Thìa","(Sốt Sa Tế/Bơ Tỏi)",25.000,R.drawable.caithia));
-        list_foods.add(new List_Food("Mì Trộn Ốp La"  ,"(Sốt Sa Tế/Bơ Tỏi)",35.000,R.drawable.opla));
-        list_foods.add(new List_Food("Mì Trộn Xá Xíu","(Sốt Sa Tế/Bơ Tỏi) ",45.000,R.drawable.xaxiu));
-        list_foods.add(new List_Food("Mì Hoành Thánh Xá Xíu"   ,"(Sốt Sa Tế/Bơ Tỏi)",55.000,R.drawable.hoanhthanhxaxiu));
-        list_foods.add(new List_Food("Mì Trộn Lôi Ký Thập Cẩm" ,"(Sốt Sa Tế/Bơ Tỏi)",25.000,R.drawable.loikithapcam));
-        list_foods.add(new List_Food("Mì Trộn Vịt Quay Xá Xíu","(Sốt Sa Tế/Bơ Tỏi)",35.000,R.drawable.vitquayxaxiu));
-        list_foods.add(new List_Food("Mì Trộn Vịt Quay"  ,"(Sốt Sa Tế/Bơ Tỏi)",45.000,R.drawable.vitquay));
-        list_foods.add(new List_Food("Mì Trộn Đùi Vịt Quay","(Sốt Sa Tế/Bơ Tỏi) ",55.000,R.drawable.duivitquay));
-        list_foods.add(new List_Food("Mì Trộn Hoành Thánh"   ,"(Sốt Sa Tế/Bơ Tỏi)",25.000,R.drawable.hoanhthanh));
-        list_foods.add(new List_Food("Soup Bò Viên" ,"(Sốt Sa Tế/Bơ Tỏi)",35.000,R.drawable.soup));
-
         adapter_list = new Adapter_List(HomeFragment.this,R.layout.layout_food,list_foods);
         listViewfood.setAdapter(adapter_list);
 
-        listViewfood.setClickable(true);
-
-        listViewfood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Mitron");
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                for(int j = 0 ; j <=i; j++){
-                    if(j == i){
-                        Intent intent = new Intent();
-                        intent.setClass(getActivity(), Layout_Food.class);
-                        intent.putExtra("name", list_foods.get(j).getName());
-                        intent.putExtra("img", list_foods.get(j).getImg());
-                        startActivity(intent);
-                    }
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list_foods.clear();
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                        System.out.println("Key Parent:" + snapshot.getKey());
+                        FoodModel foodModel = new FoodModel();
+                        foodModel.setKey(snapshot.getKey());
+                        for(DataSnapshot child: snapshot.getChildren()){
+
+                            if(child.getKey().equals("name")){
+                                foodModel.setName(child.getValue().toString());
+                            }
+
+                            if(child.getKey().equals("description")){
+                                foodModel.setDescription(child.getValue().toString());
+                            }
+
+                            if(child.getKey().equals("image")){
+                                foodModel.setImage(child.getValue().toString());
+                            }
+
+                            if(child.getKey().equals("price")){
+//                                System.out.println("Key Parent here: " + snapshot.getKey() + " Key: " + child.getKey() + " Value of: "
+//                                        + child.getKey() + " "
+//                                        + child.getValue());
+                                foodModel.setPrice(child.getValue().toString());
+                            }
+
+                        }
+                    list_foods.add(foodModel);
                 }
+                adapter_list.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
+
+        listViewfood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                FoodModel foodModel = list_foods.get(i);
+                Intent intent = new Intent(getContext() , Layout_Food.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("key" , foodModel.getKey());
+                bundle.putString("name" , foodModel.getName());
+                bundle.putString("description" , foodModel.getDescription());
+                bundle.putString("price" , foodModel.getPrice());
+                bundle.putString("image" , foodModel.getImage());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
+
         return view;
     }
+
+
 
 }

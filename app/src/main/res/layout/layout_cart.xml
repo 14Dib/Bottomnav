@@ -2,18 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+    android:padding="5dp"
     >
 
     <ImageView
-        android:id="@+id/img_food"
+        android:id="@+id/cart_img"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         ></ImageView>
     <TextView
-        android:id="@+id/name_food"
+        android:id="@+id/cart_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -21,38 +21,39 @@
         android:textStyle="bold"
         android:textSize="18dp"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/img_food"
+        android:layout_toRightOf="@+id/cart_img"
         ></TextView>
 
     <TextView
-        android:id="@+id/des_food"
+        android:id="@+id/cart_des"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/img_food"
+        android:layout_toRightOf="@+id/cart_img"
         android:text="Description"
         android:textSize="16dp"
         android:textStyle="italic"
         android:textColor="#acacac"
         android:padding="10dp"
-        android:layout_below="@+id/name_food"
+        android:layout_below="@+id/cart_name"
         ></TextView>
 
     <TextView
-        android:id="@+id/monney_food"
+        android:id="@+id/cart_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="25.000 vnd"
         android:textSize="19dp"
         android:textStyle="bold"
         android:padding="10dp"
-        android:layout_toRightOf="@+id/img_food"
-        android:layout_below="@+id/des_food"
-        android:layout_alignBottom="@id/img_food"
+        android:layout_toRightOf="@+id/cart_img"
+        android:layout_below="@+id/cart_des"
+        android:layout_alignBottom="@id/cart_img"
         ></TextView>
 
 
+
     <TextView
-        android:id="@+id/txt_add"
+        android:id="@+id/txt_increase"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginBottom="0dp"
@@ -61,10 +62,23 @@
         android:text="+"
         android:textColor="@color/black"
         android:textSize="25dp"
-        android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
-        android:layout_below="@+id/des_food"
+        android:layout_below="@+id/cart_des"
+        android:layout_toRightOf="@+id/cart_quantity"
         />
+
+    <EditText
+        android:id="@+id/cart_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:inputType="number"
+        android:textStyle="bold"
+        android:padding="11dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/cart_des"
+        android:layout_toRightOf="@+id/txt_Decrease"
+        ></EditText>
 
     <TextView
         android:id="@+id/txt_Decrease"
@@ -76,23 +90,19 @@
         android:text="--"
         android:textColor="@color/black"
         android:textSize="25dp"
-        android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
-        android:layout_below="@+id/des_food"
-        android:layout_marginRight="90dp"
+        android:layout_below="@+id/cart_des"
+        android:layout_toRightOf="@+id/cart_price"
+        android:layout_marginLeft="10dp"
         />
 
-    <EditText
-        android:id="@+id/Soluong"
+    <ImageView
+        android:layout_marginTop="5dp"
+        android:id="@+id/btn_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="01"
-        android:textStyle="bold"
-        android:padding="10dp"
+        android:src="@drawable/baseline_clear_24"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/des_food"
-        android:layout_marginRight="45dp"
-        ></EditText>
+        />
 
 </RelativeLayout>

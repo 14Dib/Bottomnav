@@ -15,6 +15,15 @@
         android:theme="@style/Theme.Bottomnav"
         tools:targetApi="31">
         <activity
+            android:name=".DetailHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".about_UsActivity"
             android:exported="false" />
         <activity

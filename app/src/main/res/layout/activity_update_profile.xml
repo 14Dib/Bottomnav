@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateProfileActivity">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imguser"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/default_user"
+        ></de.hdodenhof.circleimageview.CircleImageView>
+
+
+    <TextView
+
+        android:id="@+id/send_code"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/imguser"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/round_button3"
+        android:gravity="center"
+        android:text="YOUR EMAIL VERRIFY"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:visibility="gone"></TextView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@+id/layout_email"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:id="@+id/layout_name"
+        android:layout_marginTop="24dp"
+        android:layout_centerHorizontal="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/username"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/send_code"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_email"
+        android:hint="Email"
+        android:layout_centerHorizontal="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:id="@+id/email"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/layout_name"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_phone"
+        android:hint="Phone"
+        android:layout_centerHorizontal="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:id="@+id/phone"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+
+        android:id="@+id/update_profile"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/layout_phone"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/round_button3"
+        android:gravity="center"
+        android:text="UPDATE "
+        android:textSize="20dp"
+        android:textStyle="bold"></TextView>
+
+    <TextView
+
+        android:id="@+id/change_password"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/update_profile"
+        android:layout_centerInParent="true"
+
+        android:layout_marginTop="24dp"
+        android:background="@drawable/round_button3"
+        android:gravity="center"
+        android:text="CHANGE PASSWORD"
+        android:textSize="20dp"
+        android:textStyle="bold"></TextView>
+
+
+    <TextView
+
+        android:id="@+id/back"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/change_password"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="24dp"
+
+        android:background="@drawable/round_button3"
+        android:gravity="center"
+        android:text="BACK"
+        android:textSize="20dp"
+        android:textStyle="bold"></TextView>
+
+
+</RelativeLayout>

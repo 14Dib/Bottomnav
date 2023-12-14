@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HistoryActivity">
+
+    <TextView
+        android:id="@+id/donhang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LỊCH SỬ ĐẶT HÀNG"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:fontFamily="@font/bungee"
+        android:layout_centerHorizontal="true"
+    />
+
+    <ListView
+        android:id="@+id/listview_history"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_below="@+id/donhang"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+
+        android:id="@+id/back_to_main"
+        android:layout_width="380dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/listview_history"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_button3"
+        android:gravity="center"
+        android:text="Back"
+        android:textSize="20dp"
+        android:textStyle="bold"></TextView>
+
+</RelativeLayout>

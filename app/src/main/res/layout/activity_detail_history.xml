@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailHistoryActivity">
+
+    <TextView
+        android:id="@+id/donhang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CHI TIẾT HÓA ĐƠN"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:fontFamily="@font/bungee"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/date_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NGÀY ĐẶT: "
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_below="@+id/donhang"
+        ></TextView>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/date_total_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#F24C3D"
+        android:text="0"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_below="@+id/donhang"
+        android:layout_toRightOf="@+id/date_history"
+        ></TextView>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/time_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GIỜ ĐẶT: "
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_below="@+id/date_history"
+        ></TextView>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/time_total_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#F24C3D"
+        android:text="0"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_below="@+id/date_history"
+        android:layout_toRightOf="@+id/time_history"
+        ></TextView>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/price_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TỔNG CỘNG: "
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_below="@+id/time_history"
+        ></TextView>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/price_total_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#F24C3D"
+        android:text="0.000 VND"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_below="@+id/time_history"
+        android:layout_toRightOf="@+id/price_history"
+        ></TextView>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/quantity_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TỔNG SỐ LƯỢNG: "
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_below="@+id/price_history"
+        ></TextView>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/quantity_total_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#F24C3D"
+        android:text="0"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_below="@+id/price_history"
+        android:layout_toRightOf="@+id/quantity_history"
+        ></TextView>
+
+    <ListView
+        android:id="@+id/listview_history_cart"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_below="@+id/quantity_total_history"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+
+        android:id="@+id/back_to_history"
+        android:layout_width="380dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/listview_history_cart"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_button3"
+        android:gravity="center"
+        android:text="Back"
+        android:textSize="20dp"
+        android:textStyle="bold">
+
+    </TextView>
+
+</RelativeLayout>

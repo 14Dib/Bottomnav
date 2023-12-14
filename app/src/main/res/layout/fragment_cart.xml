@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".SettingFragment">
+    tools:context=".CartFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ListView
-        android:id="@+id/listviewFood"
+        android:id="@+id/listview_cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -17,11 +17,11 @@
         />
 
     <TextView
-        android:id="@+id/txtTotal"
+        android:id="@+id/txtTotal_all"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/bungee"
-        android:text="Tổng Cộng : 100.000 vnd"
+        android:text="Tổng Cộng:"
         android:textSize="20dp"
         android:textStyle="bold"
         android:layout_gravity="bottom"
@@ -31,8 +31,23 @@
         />
 
     <TextView
+        android:id="@+id/txtTotal_all_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bungee"
+        android:text="000.000 vnd"
+        android:textSize="20dp"
+        android:textColor="#F24C3D"
+        android:textStyle="bold"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="220dp"
+        android:gravity="center"
+        android:layout_marginLeft="170dp"
+        />
 
-        android:id="@+id/log_out"
+    <TextView
+
+        android:id="@+id/check_out"
         android:layout_width="380dp"
         android:layout_height="40dp"
         android:layout_centerInParent="true"

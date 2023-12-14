@@ -29,6 +29,8 @@
             android:src="@drawable/default_user"
             ></de.hdodenhof.circleimageview.CircleImageView>
 
+
+
         <TextView
 
             android:id="@+id/edtname"
@@ -40,7 +42,8 @@
             android:layout_marginTop="24dp"
             android:text="USERNAME111"
             android:textSize="21dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@null"/>
 
 
         <TextView
@@ -56,7 +59,9 @@
             android:paddingLeft="45dp"
             android:text="Mitron@gmail.com"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@null"
+            />
 
         <TextView
             android:layout_below="@+id/edtmail"
@@ -71,7 +76,8 @@
             android:drawablePadding="20sp"
             android:text="0123456789"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@null"/>
 
         <TextView
             android:layout_below="@+id/edtPhone"
@@ -88,21 +94,38 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+        <TextView
+
+            android:id="@+id/update_profile"
+            android:layout_width="320dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/edtabout"
+
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_button3"
+            android:gravity="center"
+            android:text="UPDATE PROFILE"
+            android:textSize="20dp"
+            android:textStyle="bold"></TextView>
+
 
         <TextView
 
             android:id="@+id/log_out"
             android:layout_width="320dp"
             android:layout_height="40dp"
-            android:layout_below="@+id/edtabout"
+            android:layout_below="@+id/update_profile"
             android:layout_centerInParent="true"
             android:layout_marginTop="20dp"
-            android:background="@drawable/round_button3"
 
+            android:background="@drawable/round_button3"
             android:gravity="center"
             android:text="LOG OUT"
             android:textSize="20dp"
             android:textStyle="bold"></TextView>
+
+
 
 <!--        <TextView-->
 <!--            android:paddingLeft="45dp"-->
@@ -154,6 +177,7 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/history_icon"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:fontFamily="@font/antic"
@@ -163,6 +187,7 @@
                         android:paddingTop="10dp"
                         android:textColor="@color/black"/>
                     <TextView
+                        android:id="@+id/history_txt"
                         android:textStyle="bold"
                         android:textColor="@android:color/holo_orange_dark"
                         android:textSize="25dp"

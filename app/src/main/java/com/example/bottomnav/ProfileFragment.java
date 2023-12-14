@@ -10,10 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +31,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,7 +85,7 @@ public class ProfileFragment extends Fragment {
     }
 
 
-    TextView btn_logout, aboutUs, txtName, txtPhone, txtEmail;
+    TextView btn_update, btn_logout, aboutUs , txtName, txtPhone, txtEmail, history_icon, history_txt;
 
     ImageView imguser;
 
@@ -86,6 +93,9 @@ public class ProfileFragment extends Fragment {
 
     String userId;
 
+    StorageReference storageReference;
+
+    de.hdodenhof.circleimageview.CircleImageView imageUser;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -94,6 +104,8 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         btn_logout = (TextView) view.findViewById(R.id.log_out);
+
+        btn_update = (TextView) view.findViewById(R.id.update_profile);
 
         imguser = (ImageView) view.findViewById(R.id.imguser);
 
@@ -105,6 +117,64 @@ public class ProfileFragment extends Fragment {
 
         txtPhone = (TextView) view.findViewById(R.id.edtPhone);
 
+        history_icon = (TextView) view.findViewById(R.id.history_icon);
+        history_txt = (TextView) view.findViewById(R.id.history_txt);
+
+        getUserData();
+
+        storageReference = FirebaseStorage.getInstance().getReference();
+
+        StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid() +"/profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(getActivity()).load(uri).into(imguser);
+            }
+        });
+
+
+        aboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), about_UsActivity.class));
+            }
+        });
+
+        history_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), HistoryActivity.class));
+            }
+        });
+
+        history_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), HistoryActivity.class));
+            }
+        });
+
+
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+                onDestroy();
+            }
+        });
+
+
+        btn_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), UpdateProfileActivity.class));
+            }
+        });
+        return view;
+    }
+
+    void getUserData(){
         fAuth = FirebaseAuth.getInstance();
 
         userId = fAuth.getCurrentUser().getUid();
@@ -126,33 +196,6 @@ public class ProfileFragment extends Fragment {
                 }
             }
         });
-
-        aboutUs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), about_UsActivity.class));
-            }
-        });
-
-        btn_logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getActivity(), LoginActivity.class));
-                onDestroy();
-            }
-        });
-
-        imguser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Toast.makeText(getContext(), "Click vào ảnh", Toast.LENGTH_SHORT).show();
-            }
-        });
-        return view;
     }
-
-
-
 
 }
