@@ -120,8 +120,8 @@ public class CartAdapter extends BaseAdapter {
                                         dialogInterface.dismiss();
                                     })
                                     .setPositiveButton("OK", (dialogInterface, i12) -> {
-                                        notifyDataSetChanged();
                                         deleteItemCart(cart_list.get(i));
+                                        notifyDataSetChanged();
                                         dialogInterface.dismiss();
                                     }).create();
                 dialog.show();
