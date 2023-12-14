@@ -172,36 +172,38 @@ public class CartFragment extends Fragment {
                         Toast.makeText(getContext(), "Không có sản phẩm trong giỏ hàng", Toast.LENGTH_SHORT).show();
                     }
 
-                    String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                    String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+                    if(!(list_carts.isEmpty())){
+                        String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                        String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
 
-                    CheckoutModel checkoutModel = new
-                            CheckoutModel(all_name,currentDate,currentTime,all_quantity,total_checkout,list_carts);
+                        CheckoutModel checkoutModel = new
+                                CheckoutModel(all_name,currentDate,currentTime,all_quantity,total_checkout,list_carts);
 
 
-                    userCheckout.child("" + idCheck)
-                            .setValue(checkoutModel)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    Toast.makeText(getContext(), "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(getContext(), "Đặt hàng thất bại", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                    System.out.println("CHECK ERROR: " + all_quantity);
-                    total_checkout = (float) 0;
-                    all_name = "";
-                    all_quantity = 0;
-                    reference.removeValue();
-                    list_carts.clear();
-                    adapter_cart.notifyDataSetChanged();
+                        userCheckout.child("" + idCheck)
+                                .setValue(checkoutModel)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(getContext(), "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(getContext(), "Đặt hàng thất bại", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                        System.out.println("CHECK ERROR: " + all_quantity);
+                        total_checkout = (float) 0;
+                        all_name = "";
+                        all_quantity = 0;
+                        reference.removeValue();
+                        list_carts.clear();
+                        adapter_cart.notifyDataSetChanged();
+                    }
+
                 }
-
         });
 
         return view;
