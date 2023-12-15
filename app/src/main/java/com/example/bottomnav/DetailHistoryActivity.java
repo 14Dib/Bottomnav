@@ -22,7 +22,7 @@ import java.util.List;
 
 public class DetailHistoryActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
-    TextView txtDate, txtTime, txtPrice, txtQuantity, txt_back;
+    TextView txtDate, txtTime, txtPrice, txtQuantity, txt_back, txtUser_Name, txtUser_Phone, txtUser_Address;
     ListView listview_cart_history;
     DetailHistoryAdapter detailHistoryAdapter;
     List<CartModel> cart_list;
@@ -38,6 +38,9 @@ public class DetailHistoryActivity extends AppCompatActivity {
         txtTime = (TextView) findViewById(R.id.time_total_history);
         txtPrice = (TextView) findViewById(R.id.price_total_history);
         txtQuantity = (TextView) findViewById(R.id.quantity_total_history);
+        txtUser_Name = (TextView) findViewById(R.id.user_Name_2);
+        txtUser_Phone = (TextView) findViewById(R.id.user_Phone_2);
+        txtUser_Address = (TextView) findViewById(R.id.user_Address_2);
         listview_cart_history = (ListView) findViewById(R.id.listview_history_cart);
 
         txt_back = (TextView) findViewById(R.id.back_to_history);
@@ -48,12 +51,17 @@ public class DetailHistoryActivity extends AppCompatActivity {
         String time = bundle.getString("time");
         String price = bundle.getString("price");
         String quantity = bundle.getString("quantity");
+        String user_Name = bundle.getString("user_Name");
+        String user_Phone = bundle.getString("user_Phone");
+        String user_Address = bundle.getString("user_Address");
 
         txtDate.setText(date);
         txtTime.setText(time);
         txtPrice.setText(price + "00 VND");
         txtQuantity.setText(quantity);
-
+        txtUser_Name.setText(user_Name);
+        txtUser_Phone.setText(user_Phone);
+        txtUser_Address.setText(user_Address);
         cart_list = new ArrayList<>();
 
         detailHistoryAdapter = new DetailHistoryAdapter(DetailHistoryActivity.this, R.layout.layout_history_cart,cart_list);

@@ -77,6 +77,18 @@ public class HistoryActivity extends AppCompatActivity {
                                 checkoutModel.setTotalquantity(Integer.parseInt(getString));
                             }
 
+                            if(checkoutChild.getKey().equals("user_Name")){
+                                checkoutModel.setUser_Name(checkoutChild.getValue().toString());
+                            }
+
+                            if(checkoutChild.getKey().equals("user_Phone")){
+                                checkoutModel.setUser_Phone(checkoutChild.getValue().toString());
+                            }
+
+                            if(checkoutChild.getKey().equals("user_Address")){
+                                checkoutModel.setUser_Address(checkoutChild.getValue().toString());
+                            }
+
                             if(checkoutChild.getKey().equals("cart_list")){
                                 checkoutModel.setCart_list(null);
                             }
@@ -112,6 +124,9 @@ public class HistoryActivity extends AppCompatActivity {
                 bundle.putString("time" , checkoutModel.getTime());
                 bundle.putString("price" , String.valueOf(checkoutModel.getTotalPrice()));
                 bundle.putString("quantity" , String.valueOf(checkoutModel.getTotalquantity()));
+                bundle.putString("user_Name" , checkoutModel.getUser_Name());
+                bundle.putString("user_Phone" , checkoutModel.getUser_Phone());
+                bundle.putString("user_Address" , checkoutModel.getUser_Address());
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

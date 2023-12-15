@@ -12,9 +12,111 @@
         android:layout_height="wrap_content"
         android:text="CHI TIẾT HÓA ĐƠN"
         android:textStyle="bold"
-        android:textSize="18dp"
+        android:textSize="20dp"
         android:fontFamily="@font/bungee"
         android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/banner_giaohang"
+        android:text="THÔNG TIN KHÁCH HÀNG"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/donhang"
+        />
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/user_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TÊN KHÁCH HÀNG: "
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:layout_below="@+id/banner_giaohang"
+            ></TextView>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/user_Name_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F24C3D"
+            android:text="0"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:layout_below="@+id/banner_giaohang"
+            android:layout_toRightOf="@+id/user_Name"
+            ></TextView>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/user_Phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SỐ ĐIỆN THOẠI: "
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:layout_below="@+id/user_Name"
+            ></TextView>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/user_Phone_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F24C3D"
+            android:text="0"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:layout_below="@+id/user_Name"
+            android:layout_toRightOf="@+id/user_Phone"
+            ></TextView>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/user_Address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ĐỊA CHỈ GIAO HÀNG: "
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:layout_below="@+id/user_Phone"
+            ></TextView>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/user_Address_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F24C3D"
+            android:text="0"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:layout_below="@+id/user_Phone"
+            android:layout_toRightOf="@+id/user_Address"
+            ></TextView>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/banner_chitiet"
+        android:text="CHI TIẾT HÓA ĐƠN"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_Address"
         />
 
     <TextView
@@ -26,7 +128,7 @@
         android:text="NGÀY ĐẶT: "
         android:textStyle="bold"
         android:textSize="16dp"
-        android:layout_below="@+id/donhang"
+        android:layout_below="@+id/banner_chitiet"
         ></TextView>
 
     <TextView
@@ -39,7 +141,7 @@
         android:text="0"
         android:textStyle="bold"
         android:textSize="16dp"
-        android:layout_below="@+id/donhang"
+        android:layout_below="@+id/banner_chitiet"
         android:layout_toRightOf="@+id/date_history"
         ></TextView>
 
@@ -124,7 +226,7 @@
     <ListView
         android:id="@+id/listview_history_cart"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="250dp"
         android:layout_below="@+id/quantity_total_history"
         android:padding="10dp"
         android:layout_marginTop="20dp"

@@ -1,13 +1,16 @@
 package com.example.bottomnav;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +23,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -89,6 +95,8 @@ public class CartFragment extends Fragment {
 
     int all_quantity = 0;
 
+    String user_Name ="";
+    String user_Phone="";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -107,6 +115,20 @@ public class CartFragment extends Fragment {
 
         adapter_cart = new CartAdapter(CartFragment.this,R.layout.layout_cart,list_carts);
         listview_cart.setAdapter(adapter_cart);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        DocumentReference docRef = db.collection("users").document(userId);
+
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists()){
+                    user_Name = documentSnapshot.getString("fname");
+                    user_Phone = documentSnapshot.getString("phone");
+                }
+            }
+        });
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Cart").child(userId);
 
@@ -173,34 +195,54 @@ public class CartFragment extends Fragment {
                     }
 
                     if(!(list_carts.isEmpty())){
-                        String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                        String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+                        EditText addressCheckout = new EditText(view.getContext());
+                        AlertDialog.Builder address_Dialog = new AlertDialog.Builder(view.getContext());
+                        address_Dialog.setTitle("Nhập địa chỉ để thanh toán ?");
+                        address_Dialog.setMessage("Nhập địa chỉ của bạn ");
+                        address_Dialog.setView(addressCheckout);
 
-                        CheckoutModel checkoutModel = new
-                                CheckoutModel(all_name,currentDate,currentTime,all_quantity,total_checkout,list_carts);
+                        address_Dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                String user_Address = addressCheckout.getText().toString().trim();
+                                String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                                String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
 
 
-                        userCheckout.child("" + idCheck)
-                                .setValue(checkoutModel)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        Toast.makeText(getContext(), "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(getContext(), "Đặt hàng thất bại", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                        System.out.println("CHECK ERROR: " + all_quantity);
-                        total_checkout = (float) 0;
-                        all_name = "";
-                        all_quantity = 0;
-                        reference.removeValue();
-                        list_carts.clear();
-                        adapter_cart.notifyDataSetChanged();
+                                CheckoutModel checkoutModel = new
+                                        CheckoutModel(all_name,currentDate,currentTime,all_quantity,total_checkout,user_Name,user_Phone,user_Address,list_carts);
+
+                                userCheckout.child("" + idCheck)
+                                        .setValue(checkoutModel)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                Toast.makeText(getContext(), "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast.makeText(getContext(), "Đặt hàng thất bại", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                total_checkout = (float) 0;
+                                all_name = "";
+                                all_quantity = 0;
+                                reference.removeValue();
+                                list_carts.clear();
+                                adapter_cart.notifyDataSetChanged();
+                            }
+                        });
+
+                        address_Dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        });
+
+                        address_Dialog.create().show();
                     }
 
                 }
